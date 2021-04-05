@@ -64,7 +64,7 @@ const app2 = new Vue({
 const app3 = new Vue({
     el: '#app3',
     data:{
-        titulo: "Gym con Vue"
+        titulo: "GYM con Vue"
 
     },
     methods: {
