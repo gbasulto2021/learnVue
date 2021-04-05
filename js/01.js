@@ -67,6 +67,7 @@ const app3 = new Vue({
         titulo: "GYM con Vue",
         tareas: [],
         nuevaTarea: ''
+
     },
     methods: {
        agregarTarea (){
@@ -74,15 +75,25 @@ const app3 = new Vue({
               nombre:  this.nuevaTarea,
               estado: false
            });
-           this.nuevaTarea = ''
+           this.nuevaTarea = '';
+           localStorage.setItem('gym-vue', JSON.stringify(this.tareas));
        },
        editarTarea (index){
            this.tareas[index].estado = true;
+           localStorage.setItem('gym-vue', JSON.stringify(this.tareas));
 
        },
        eliminarTarea (index){
         this.tareas.splice(index,1);
-
-    }
+        localStorage.setItem('gym-vue', JSON.stringify(this.tareas));
+       }
+    },
+    created: function(){
+        let datosDb = JSON.parse(localStorage.getItem('gym-vue'));
+        if (datosDb === null){
+            this.tareas = [];
+        } else{
+            this.tareas = datosDb;
+        }
     }
 });
