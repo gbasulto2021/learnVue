@@ -64,10 +64,25 @@ const app2 = new Vue({
 const app3 = new Vue({
     el: '#app3',
     data:{
-        titulo: "GYM con Vue"
-
+        titulo: "GYM con Vue",
+        tareas: [],
+        nuevaTarea: ''
     },
     methods: {
+       agregarTarea (){
+           this.tareas.push({
+              nombre:  this.nuevaTarea,
+              estado: false
+           });
+           this.nuevaTarea = ''
+       },
+       editarTarea (index){
+           this.tareas[index].estado = true;
 
+       },
+       eliminarTarea (index){
+        this.tareas.splice(index,1);
+
+    }
     }
 });
